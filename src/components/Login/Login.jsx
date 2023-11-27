@@ -23,36 +23,20 @@ function Login() {
   const handleSubmit = async(e) => {
     e.preventDefault()
     console.log(data)
-    const authService = new AuthService()
-    const d = authService.authenticate(data);
-    console.log(d)
-    // const url = 'http://localhost:8000/api/users/authenticate/'
-
-    // await fetch(url, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-
-    //   body: JSON.stringify(data)
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data)
-    //     // localStorage.setItem('token', response.data.token)
-    //     // navigate('/')
-    //   })
-    //   .catch((error) => {
-    //     setMsg(error.response.data.detail)
-    //     setIsError(true)
-    //   });
+    AuthService.authenticate(data)
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
     return ( 
     <>
     <div className="flex items-center justify-center mb-10">
       <div className="max-w-md w-full">
-        <div className="text-center text-2xl font-semibold">
+        <div className="text-center text-2xl text-gray-700 pt-5 font-semibold">
           Login
         </div>
         <form className="p-6 flex flex-col justify-center"
@@ -101,7 +85,9 @@ function Login() {
 
           <button
             type="submit"
-            className="md:w-32 bg-orange-700 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-orange-600 transition ease-in-out duration-300"
+            className="md:w-32 bg-orange-700 hover:bg-blue-dark text-white 
+                      font-bold py-3 px-6 rounded-lg mt-3 hover:bg-orange-600 
+                      transition ease-in-out duration-300"
           >
             Login
           </button>

@@ -1,5 +1,7 @@
 import config from "../config/config";
 
+import axios from "axios";
+
 export class AuthService {
     url;
 
@@ -10,16 +12,7 @@ export class AuthService {
     async create(data) {
         const create_url = this.url.concat("create/");
         try {
-            const response = await fetch(create_url, {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-        
-                body: JSON.stringify(data)
-            });
-
-            return await response.json();
+            return axios.post(create_url, data);
         } catch (error) {
             throw error;
         }
@@ -28,16 +21,7 @@ export class AuthService {
     async authenticate(data) {
         const auth_url = this.url.concat("authenticate/");
         try {
-            const response = await fetch(auth_url, {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-        
-                body: JSON.stringify(data)
-            });
-
-            return await response.json();
+            return axios.post(auth_url, data);
         } catch (error) {
             throw error;
         }
@@ -45,23 +29,16 @@ export class AuthService {
 
     async logout(token) {
         const logout_url = this.url.concat("logout/");
+        const headers = {
+            'Authorization' : `Bearer ${token}`,
+        };
 
         try {
-            const response = await fetch(logout_url, {
-                method : 'POST',
-                headers : {
-                    'Content-Type' : 'application/json',
-                    'Authorization' : `Bearer ${token}`
-                },
-                body: null
-            });
-
-            const data = await response.json();
-            console.log(data);
+            return axios.post(logout_url, {}, { headers });
         } catch (error) {
             throw error;
         }
     }
 }
 
-export default AuthService;
+export default new AuthService();

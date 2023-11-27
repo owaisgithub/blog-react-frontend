@@ -23,105 +23,101 @@ function Createuser() {
   const handleSubmit = async(e) => {
     e.preventDefault()
     console.log(data)
-    const authService = new AuthService()
-    const d = authService.create(data)
-    console.log(d)
-    
-    // const url = 'http://localhost:8000/api/users/create/';
-
-    // await fetch(url, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // })
-    // .then((response) => {
-    //   console.log('Data posted successfully:', response.data);
-    // })
-    // .catch((error) => {
-    //   setMsg(error.response.data.email)
-    //   setIsError(true)
-    //   console.error('API call error:', error);
-    // });
+    AuthService.create(data)
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
     return ( 
         <>
     <div className="flex items-center justify-center mb-10">
       <div className="max-w-md w-full">
-        <div className="text-center text-2xl font-semibold mb-4 text-white">Register</div>
-        <form className="bg-gray-800 p-6 rounded-lg shadow-md" onSubmit={handleSubmit}>
+        <div className="text-center text-2xl text-gray-700 pt-5 font-semibold">Register</div>
+        <form className="p-6 flex flex-col justify-center" onSubmit={handleSubmit}>
           {isError ? (
             <div className='bg-white rounded-lg py-3 text-lg'>
-              <p className='flex items-center justify-center text-red-600'>{msg}</p>
+              <p className='lex items-center justify-center text-red-600'>{msg}</p>
             </div>
           ) : (
-            <></>
+            null
           )}
-          <div className="mb-4">
-            <label htmlFor="username" 
-                className="block text-gray-600 text-sm font-medium">
-                    First Name
+          <div className="flex flex-col mt-2">
+            <label htmlFor="first_name" className="hidden">
+              First Name
             </label>
             <input 
                 type="text" 
                 id="first_name" 
                 name="first_name" 
-                className='outline-none w-full py-1 px-3 rounded-lg'
+                className='w-100 mt-2 py-3 px-3 rounded-lg bg-white border 
+                          border-gray-400 text-gray-800 font-semibold 
+                          focus:border-orange-500 focus:outline-none'
                 value={data.first_name}
                 onChange={changeInput}
+                placeholder='First Name'
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="username" 
-                className="block text-gray-600 text-sm font-medium">
-                    Last Name
+          <div className="flex flex-col mt-2">
+            <label htmlFor="last_name" className="hidden">
+              Last Name
             </label>
             <input 
                 type="text" 
                 id="last_name" 
                 name="last_name" 
-                className='outline-none w-full py-1 px-3 rounded-lg'
+                className='w-100 mt-2 py-3 px-3 rounded-lg bg-white border 
+                          border-gray-400 text-gray-800 font-semibold 
+                          focus:border-orange-500 focus:outline-none'
                 value={data.last_name}
                 onChange={changeInput}
+                placeholder='Last Name'
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="email" 
-                className="block text-gray-600 text-sm font-medium">
-                    Email
+          <div className="flex flex-col mt-2">
+            <label htmlFor="email" className="hidden">
+              Email
             </label>
             <input 
                 type="email" 
                 id="email" 
                 name="email" 
-                className='outline-none w-full py-1 px-3 rounded-lg'
+                className='w-100 mt-2 py-3 px-3 rounded-lg bg-white border 
+                          border-gray-400 text-gray-800 font-semibold 
+                          focus:border-orange-500 focus:outline-none'
                 value={data.email}
                 onChange={changeInput}
+                placeholder='Email eg:- example@gmail.com'
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="password" 
-                className="block text-gray-600 text-sm font-medium">
-                    Password
+          <div className="flex flex-col mt-2">
+            <label htmlFor="password" className="hidden">
+              Password
             </label>
             <input 
                 type="password" 
                 id="password" 
                 name="password" 
-                className='outline-none w-full py-1 px-3 rounded-lg'
+                className='w-100 mt-2 py-3 px-3 rounded-lg bg-white border 
+                          border-gray-400 text-gray-800 font-semibold 
+                          focus:border-orange-500 focus:outline-none'
                 value={data.password}
                 onChange={changeInput}
+                placeholder='Password'
             />
           </div>
 
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full w-full"
+            className="md:w-32 bg-orange-700 hover:bg-blue-dark text-white 
+                      font-bold py-3 px-6 rounded-lg mt-3 hover:bg-orange-600 
+                      transition ease-in-out duration-300"
           >
             Register
           </button>
