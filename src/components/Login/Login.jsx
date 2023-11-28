@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AuthService from '../../services/AuthService'
 import useAuth from '../../context/authContext'
-
+import AuthService from '../../services/AuthService'
 
 function Login() {
   const [data, setData] = useState({
@@ -21,8 +20,9 @@ function Login() {
     setData({ ...data, [name]: value })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(data)
     AuthService.authenticate(data)
       .then(res => {
         localStorage.setItem('token', res.data.token);

@@ -20,11 +20,7 @@ export class AuthService {
 
     async authenticate(data) {
         const auth_url = this.url.concat("authenticate/");
-        try {
-            return axios.post(auth_url, data);
-        } catch (error) {
-            throw error;
-        }
+        return axios.post(auth_url, data);
     }
 
     async logout(token) {
