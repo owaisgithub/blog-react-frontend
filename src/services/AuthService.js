@@ -34,11 +34,12 @@ export class AuthService {
         };
 
         try {
-            return axios.post(logout_url, {}, { headers });
+            return axios.get(logout_url, { headers });
         } catch (error) {
             throw error;
         }
     }
 }
+
 
 export default new AuthService();

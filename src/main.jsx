@@ -8,6 +8,9 @@ import About from './components/About/About'
 import Contact from './components/Contact/Contact'
 import Login from './components/Login/Login'
 import Createuser from './components/Login/Createuser'
+import Logout from './components/Login/Logout'
+import Createpost from './components/Blog/Createpost'
+import Profile from './components/Profile/Profile'
 
 
 const router = createBrowserRouter(
@@ -18,6 +21,9 @@ const router = createBrowserRouter(
       <Route path='contact' element={<Contact />} />
       <Route path='login' element={<Login />} />
       <Route path='create-user' element={<Createuser />} />
+      <Route path='logout' element={<Logout />} />
+      <Route path='create-post' element={<Createpost />} />
+      <Route path='profile' element={<Profile />} />
     </Route>
   )
 )
