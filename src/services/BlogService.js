@@ -8,7 +8,7 @@ export class BlogService {
         this.url = config.blogEndPoint;
     }
 
-    async getPosts(token) {
+    getPosts(token) {
         const blogs_url = this.url.concat('all-posts/');
         const headers = {
             'Authorization' : `Bearer ${token}`,

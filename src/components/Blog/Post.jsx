@@ -29,6 +29,7 @@ const Post = ({ post }) => {
             .then(res => {
                 console.log(res.data)
                 changeLoader()
+                setContent('')
             })
             .catch(err => {
                 console.log(err)
@@ -60,7 +61,10 @@ const Post = ({ post }) => {
 
                     </div>
                     <p>Comments: {post.comment_count}</p>
-                    <form className="flex items-center" onSubmit={() => postComment(post.id)}>
+                    <form className="flex items-center" onSubmit={(e) => {
+                        e.preventDefault()
+                        postComment(post.id)
+                        }}>
                         <label htmlFor="comment"
                             className="block text-gray-600 text-md mr-3 font-medium">
                             Comment
