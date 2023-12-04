@@ -6,6 +6,7 @@ function Createuser() {
   const [data, setData] = useState({
     first_name: '',
     last_name: '',
+    handle: '',
     email: '',
     password: ''
   })
@@ -29,7 +30,7 @@ function Createuser() {
       .then(res => {
         console.log(res.data)
         setMsg('Now Login')
-        setData({ ...data, first_name: '', last_name: '', email: '', password: '' })
+        setData({ ...data, first_name: '', last_name: '', handle: '', email: '', password: '' })
         setEmailErr(null)
         setPassErr(null)
         setIsError(false)
@@ -91,6 +92,23 @@ function Createuser() {
                 value={data.last_name}
                 onChange={changeInput}
                 placeholder='Last Name'
+              />
+            </div>
+
+            <div className="flex flex-col mt-2">
+              <label htmlFor="handle" className="hidden">
+                Handle
+              </label>
+              <input
+                type="text"
+                id="handle"
+                name="handle"
+                className='w-100 mt-2 py-3 px-3 rounded-lg bg-white border 
+                          border-gray-400 text-gray-800 font-semibold 
+                          focus:border-orange-500 focus:outline-none'
+                value={data.handle}
+                onChange={changeInput}
+                placeholder='Handle'
               />
             </div>
 

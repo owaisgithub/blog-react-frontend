@@ -26,6 +26,7 @@ function Login() {
     AuthService.authenticate(data)
       .then(res => {
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', res.data.user);
         setData({ ...data, email: '', password: '' })
         console.log(res.data)
         login()

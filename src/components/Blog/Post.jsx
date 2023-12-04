@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '@material-tailwind/react'
+import { Link } from 'react-router-dom'
 
 import BlogService from '../../services/BlogService'
 import useBlog from '../../context/blogContext'
@@ -86,7 +87,7 @@ const Post = ({ post }) => {
                         return (
                             <>
                                 <div className="flex items-center">
-                                    <p className="text-gray-500 text-sm mr-2">{comment.comment_user} {comment.created_at}</p>
+                                    <Link to={`/${comment.comment_user}`} className="text-gray-500 text-sm mr-2">{comment.comment_user} {comment.created_at}</Link>
                                     <p>{comment.content}</p>
                                 </div>
                             </>

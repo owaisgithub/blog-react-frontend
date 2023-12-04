@@ -14,6 +14,7 @@ const Logout = () => {
             // console.log(res.data)
             login()
             localStorage.removeItem('token')
+            localStorage.removeItem('user')
             navigate('/')
         })
         .catch(err => {
